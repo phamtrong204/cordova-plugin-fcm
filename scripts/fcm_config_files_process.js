@@ -55,7 +55,10 @@ if (directoryExists("platforms/android")) {
   if (fileExists( path )) {
     try {
       var contents = fs.readFileSync(path).toString();
+      // Legacy:
       fs.writeFileSync("platforms/android/google-services.json", contents);
+      // New path:
+      fs.writeFileSync("platforms/android/app/google-services.json", contents);
 
       var stringsXMLPath = "platforms/android/res/values/strings.xml";
       if(fileExists( stringsXMLPath )) {

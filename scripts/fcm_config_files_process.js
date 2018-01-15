@@ -55,15 +55,18 @@ if (directoryExists("platforms/android")) {
     if (fileExists( path )) {
       try {
         var contents = fs.readFileSync(path).toString();
-        fs.writeFileSync("platforms/android/google-services.json", contents);
+        var json_file = "";
         var xml_file = "";
         if (fileExists("platforms/android/app/src/main/res/values/strings.xml")) {
+          json_file = "platforms/android/app/google-services.json";
           xml_file = "platforms/android/app/src/main/res/values/strings.xml";
         } else if (fileExists("platforms/android/res/values/strings.xml")) {
+          json_file = "platforms/android/google-services.json";
           xml_file = "platforms/android/res/values/strings.xml";
         } else {
           throw new Error("cordova-plugin-fcm: You have installed platform android but file 'strings.xml' was not found at both 'platforms/android/app/src/main/res/values/' and 'platforms/android/res/values/'");
         }
+        fs.writeFileSync(json_file, contents);
         var json = JSON.parse(contents);
         var strings = fs.readFileSync(xml_file).toString();
         // strip non-default value

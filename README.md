@@ -1,7 +1,10 @@
 # Google Firebase Cloud Messaging Cordova Push Plugin
 > Extremely easy plug&play push notification plugin for Cordova applications with Google Firebase FCM.
 
->[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=VF654BMGUPQTJ)
+## Authorship
+This is a simple fork from https://github.com/fechanique/cordova-plugin-fcm.
+
+This fork has it's dependencies versions defined, which is necessary to avoid cordova build errors.
 
 #### Version 2.1.2 (03/06/2017)
 - Tested on Android and iOS using Cordova cli 6.4.0, Cordova android 6.0.0 and Cordova ios 4.3.1
@@ -13,8 +16,7 @@
 ## Installation
 Make sure you have ‘google-services.json’ for Android or  ‘GoogleService-Info.plist’ for iOS in your Cordova project root folder. You don´t need to configure anything else in order to have push notification working for both platforms, everything is magic.
 ```Bash
-cordova plugin add cordova-plugin-fcm
-
+cordova plugin add cordova-plugin-fcm-with-dependecy-updated
 ```
 
 #### Firebase configuration files
@@ -25,7 +27,6 @@ Put the downloaded file 'google-services.json' in the Cordova project root folde
 
 You will need to ensure that you have installed the appropiate Android SDK libraries.
 
-
 :warning: For Android >5.0 status bar icon, you must include transparent solid color icon with name 'fcm_push_icon.png' in the 'res' folder in the same way you add the other application icons.
 If you do not set this resource, then the SDK will use the default icon for your app which may not meet the standards for Android >5.0.
 
@@ -34,7 +35,7 @@ Put the downloaded file 'GoogleService-Info.plist' in the Cordova project root f
 
 ## Usage
 
-:warning: It's highly recommended to use REST API to send push notifications because Firebase console does not have all the functionalities. **Pay attention to the payload example in order to use the plugin properly**.  
+:warning: It's highly recommended to use REST API to send push notifications because Firebase console does not have all the functionalities. **Pay attention to the payload example in order to use the plugin properly**.
 You can also test your notifications with the free testing server: https://cordova-plugin-fcm.appspot.com
 
 #### Receiving Token Refresh
@@ -90,7 +91,7 @@ FCMPlugin.onNotification(function(data){
 ```
 
 #### Send notification. Payload example (REST API)
-Full documentation: https://firebase.google.com/docs/cloud-messaging/http-server-ref  
+Full documentation: https://firebase.google.com/docs/cloud-messaging/http-server-ref
 Free testing server: https://cordova-plugin-fcm.appspot.com
 ```javascript
 //POST: https://fcm.googleapis.com/fcm/send
@@ -128,7 +129,6 @@ Send a push notification to a single device or topic.
  - The device displays the notification message in the device notification bar.
  - If the user taps the notification, the application comes to foreground and the notification data is received in the JavaScript callback.
  - If the user does not tap the notification but opens the applicacion, nothing happens until the notification is tapped.
-
 
 ## License
 ```
